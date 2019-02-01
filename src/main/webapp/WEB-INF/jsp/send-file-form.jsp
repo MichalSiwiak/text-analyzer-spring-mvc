@@ -123,8 +123,7 @@
                     <h2 class="w-100 text-left mb-5 mt-5">Load a text file for analysis:</h2>
                     <form action="${pageContext.request.contextPath}/demo" enctype="multipart/form-data"
                           method="POST">
-                        <div class="form-group row"><label class="col-2 col-form-label">New file to
-                            send:</label>
+                        <div class="form-group row"><label class="col-2 col-form-label">Choose file (.txt):</label>
                             <div class="col-10  mb-4">
                                 <input name="file" type="file" required="true" class="form-control w-25"></div>
                         </div>

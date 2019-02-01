@@ -1,1 +1,1 @@
-# text-analyzer-spring-mvc
+# text-analyzer

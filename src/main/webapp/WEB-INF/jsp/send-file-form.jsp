@@ -121,17 +121,16 @@
             <div class="row">
                 <div class="order-md-1 w-25 col-md-12" style="">
                     <h2 class="w-100 text-left mb-5 mt-5">Load a text file for analysis:</h2>
-                    <form action="${pageContext.request.contextPath}/demo" enctype="multipart/form-data"
-                          method="POST">
+                    <form action="${pageContext.request.contextPath}/demo" enctype="multipart/form-data" method="POST">
                         <div class="form-group row"><label class="col-2 col-form-label">Choose file (.txt):</label>
                             <div class="col-10  mb-4">
                                 <input name="file" type="file" required="true" class="form-control w-25"></div>
                         </div>
-                        <input class="btn btn-secondary ml-3" type="submit" value="Approve"
+                        <input class="btn btn-secondary" type="submit" value="Approve"
                                style="height:40px; width:100px">
                         <div class="col mb-2 px-0">
                             <c:if test="${success != null}">
-                                <div class="alert alert-success text-white px-5 mt-5 mb-0" role="alert">
+                                <div id="success" class="alert alert-success text-white px-5 mt-5 mb-0" role="alert">
                                     <div class="container">
                                         <i class="now-ui-icons ui-2_like lg pull-left mr-3"></i>
                                         <strong>SUCCESS!</strong>
@@ -143,7 +142,7 @@
                                 </div>
                             </c:if>
                             <c:if test="${error != null}">
-                                <div class="alert alert-danger text-white px-5 mt-5 mb-0" role="alert">
+                                <div id="error" class="alert alert-danger text-white px-5 mt-5 mb-0" role="alert">
                                     <div class="container">
                                         <i class="now-ui-icons objects_support-17 lg pull-left mr-3"></i>
                                         <strong>ERROR!</strong>
@@ -156,15 +155,23 @@
                             </c:if>
                         </div>
                     </form>
+                    <div id="myDIV" style="display:${display}">
+                        <h4 class="mt-5 mb-2">Number of words: ${wordsMap.size()}</h4>
+                        <h4 class="mb-2">Average length of a word: </h4>
+                        <h4 class="mb-3">Number of occurrences of words: </h4>
+                        <ul class="list-group mb-5">
+                            <c:forEach items="${wordsMap}" var="entry">
+                                <li class="list-group-item d-flex justify-content-between align-items-center"> ${entry.key}
+                                    <span class="badge badge-primary badge-pill">${entry.value}</span>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
-
-
 <footer class="footer bg-dark text-muted">
     <div class="container">
         <p class="float-right">
@@ -175,7 +182,5 @@
         </p>
     </div>
 </footer>
-
-
 </body>
 </html>

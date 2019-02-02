@@ -53,7 +53,7 @@ public class TextAnalyzerController {
 
 
             try {
-                File fileDir = new File("/media/michal/Documents/Zakupy !!!.txt");
+                File fileDir = new File("C:\\Users\\msiwiak\\Downloads\\Zakupy !!!.txt");
 
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(

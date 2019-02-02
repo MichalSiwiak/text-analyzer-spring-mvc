@@ -157,12 +157,13 @@
                     </form>
                     <div id="myDIV" style="display:${display}">
                         <h4 class="mt-5 mb-2">Number of words: ${wordsMap.size()}</h4>
-                        <h4 class="mb-2">Average length of a word: </h4>
+                        <h4 class="mb-2">Average length of a word: ${average}</h4>
                         <h4 class="mb-3">Number of occurrences of words: </h4>
                         <ul class="list-group mb-5">
                             <c:forEach items="${wordsMap}" var="entry">
-                                <li class="list-group-item d-flex justify-content-between align-items-center"> ${entry.key}
-                                    <span class="badge badge-primary badge-pill">${entry.value}</span>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <h5 class="m-0">${entry.key}</h5>
+                                    <h6 class="m-0 text-dark">${entry.value}</h6>
                                 </li>
                             </c:forEach>
                         </ul>

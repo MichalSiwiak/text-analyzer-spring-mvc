@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+
 
 @Controller
 public class TextAnalyzerController {
@@ -28,6 +28,7 @@ public class TextAnalyzerController {
     public String sendFilePOST(@RequestParam("file") MultipartFile multipartFile, Model model) throws IOException {
 
         Map<String, Integer> wordsMap = new HashMap<>();
+        List<Integer> wordsListLength = new ArrayList<>();
 
         if (multipartFile.getOriginalFilename().isEmpty()) {
             model.addAttribute("error", "Please select a valid file!");
@@ -52,9 +53,20 @@ public class TextAnalyzerController {
 
             bufferedReader.close();
 
+            for (String key : wordsMap.keySet()) {
+                wordsListLength.add(key.length());
+            }
+
+            OptionalDouble average = wordsListLength
+                    .stream()
+                    .mapToDouble(a -> a)
+                    .average();
+
+
             model.addAttribute("success", "File uploaded successfully.");
             model.addAttribute("display", "block");
             model.addAttribute("wordsMap", sortByValue(wordsMap));
+            model.addAttribute("average", roundDouble2precision(average.getAsDouble(), 6));
 
         }
 
@@ -112,5 +124,15 @@ public class TextAnalyzerController {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
+    }
+
+    private double roundDouble2precision(double value, int places) {
+
+        if (places < 0)
+            throw new IllegalArgumentException();
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }

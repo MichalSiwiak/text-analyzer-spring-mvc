@@ -106,7 +106,7 @@
         <div class="text-center py-4 bg-secondary"
              style="	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row">
                     <div class="col-md-0">
                         <h1 class="text-left text-primary">Text Analyzer</h1>
                         <p class="lead text-left">The application counts occurrences of words in a text file and prints

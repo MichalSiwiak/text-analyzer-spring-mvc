@@ -41,7 +41,7 @@ public class TextAnalyzerController {
             model.addAttribute("display", "none");
         } else {
 
-            File file = new File(multipartFile.getOriginalFilename());
+            File file = new File("/tmp/" + multipartFile.getOriginalFilename());
             multipartFile.transferTo(file);
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
@@ -67,8 +67,9 @@ public class TextAnalyzerController {
             model.addAttribute("display", "block");
             model.addAttribute("wordsMap", sortByValue(wordsMap));
             model.addAttribute("average", roundDouble2precision(average.getAsDouble(), 6));
-
+            file.delete();
         }
+
 
         return "send-file-form";
     }
